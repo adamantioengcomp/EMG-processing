@@ -1,0 +1,94 @@
+
+% ========================================================
+% PACIENTE SAUDAVEL
+% ========================================================
+
+% --------plota o EMG no dominio do tempo
+
+[tmH,sigH]=rdsamp('emgdb/emg_healthy');
+figure('name','emg_healthy'), plot(tmH,sigH);
+title('EMG paciente saudável');
+xlabel('tempo (s)');
+ylabel('amplitude (mV)');
+
+% --------plota o espectro de Magnitude
+
+[fH, magH]=espectroMagnitude(sigH);
+figure('name','mag_healthy'), plot(fH,magH);
+title('Espectro de Magnitude - Paciente Saudável');
+xlabel('frequência (Hz)');
+ylabel('amplitude (mV)');
+
+% --------plota a densidade espectral de potencia (PSD)
+
+[fH, pH]=espectroPotencia(sigH);
+figure('name','psd_healthy'), plot(fH,pH);
+title('Densidade Espectral de Potência - Paciente Saudável');
+xlabel('frequência (Hz)');
+ylabel('amplitude (mV/Hz)');
+
+
+EmedH=sum(abs(sigH).^2); % calcula energia média 
+
+% ========================================================
+% PACIENTE COM MIOPATIA
+% ========================================================
+
+% --------plota o EMG no dominio do tempo
+
+[tmM,sigM]=rdsamp('emgdb/emg_myopathy');
+figure('name','emg_myopathy'), plot(tmM,sigM, 'r');
+title('EMG paciente com miopatia');
+xlabel('tempo (s)');
+ylabel('amplitude (mV)');
+
+% --------plota o espectro de Magnitude
+
+[fM, magM]=espectroMagnitude(sigM);
+figure('name','mag_myopathy'), plot(fM,magM,'r');
+title('Espectro de Magnitude - Paciente com miopatia');
+xlabel('frequência (Hz)');
+ylabel('amplitude (mV)');
+
+% --------plota a densidade espectral de potencia (PSD)
+
+[fM, pM]=espectroPotencia(sigM);
+figure('name','psd_myopathy'), plot(fM,pM, 'r');
+title('Densidade Espectral de Potência - Paciente com miopatia');
+xlabel('frequência (Hz)');
+ylabel('amplitude (mV/Hz)');
+
+EmedM=sum(abs(sigM).^2); % calcula energia média
+
+% ========================================================
+% PACIENTE NEUROPATIA
+% ========================================================
+
+% --------plota o EMG no dominio do tempo
+
+[tmN,sigN]=rdsamp('emgdb/emg_neuropathy');
+figure('name','emg_neuropathy'), plot(tmN,sigN, 'g');
+title('EMG paciente com neuropatia');
+xlabel('tempo (s)');
+ylabel('amplitude (mV)');
+
+% --------plota o espectro de Magnitude
+
+[fN, magN]=espectroMagnitude(sigN);
+figure('name','mag_neuropathy'), plot(fN,magN,'g');
+title('Espectro de Magnitude - Paciente com miopatia');
+xlabel('frequência (Hz)');
+ylabel('amplitude (mV)');
+
+% --------plota a densidade espectral de potencia (PSD)
+
+[fN, pN]=espectroPotencia(sigN);
+figure('name','psd_neuropathy'), plot(fM,pM, 'g');
+title('Densidade Espectral de Potência - Paciente com neuropatia');
+xlabel('frequência (Hz)');
+ylabel('amplitude (mV/Hz)');
+
+
+EmedN=sum(abs(sigN).^2); % calcula energia média
+
+
